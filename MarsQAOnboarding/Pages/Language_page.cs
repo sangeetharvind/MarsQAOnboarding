@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MarsOnboarding.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -7,83 +8,105 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsQA.Pages
+namespace MarsOnboarding.Pages
 {
-    public class Language_Page
+    public class Language_Page : CommonDriver
     {
-        public void CreateLanguagePage(IWebDriver driver)
+        private IWebElement AddNew => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
+        private IWebElement AddLanguageTextbox => driver.FindElement(By.Name("name"));
+        private IWebElement ChooseLanguageLevel => driver.FindElement(By.XPath("//select[@name='level']"));
+        private IWebElement AddButton => driver.FindElement(By.XPath("//input[@value='Add']"));
+        private IWebElement UpdateLanguage => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[4]/tr/td[1]"));
+        private IWebElement UpdateLanguagelevel => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[4]/tr/td[2]"));
+        private IWebElement UpdateButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i"));
+        private IWebElement PencilIcon => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i"));
+        private IWebElement DeleteLanguage => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+
+        public void AddLanguage(string language, string level)
         {
-            try
-            {
-                // Navigate to Profile module 
-                IWebElement profileModule = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[2]"));
-                profileModule.Click();
-                Thread.Sleep(2000);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Profile module button has not found");
-            }
-
-
-            // Select Language sub-module
-            IWebElement languageSubmodule = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
-            languageSubmodule.Click();
+            //Click on Language Tab
+            AddNew.Click();
+            Thread.Sleep(1000);
+            //Enter the Language that has to be added
+            AddLanguageTextbox.SendKeys(language);
             Thread.Sleep(1000);
 
-            // Select Add button
-            IWebElement addnewButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
-            addnewButton.Click();
+            //Choose the Language level
 
-            // Add language
-            IWebElement addLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input"));
-            addLanguage.SendKeys("Kannada");
+            ChooseLanguageLevel.SendKeys(level);
+            ChooseLanguageLevel.Click();
+            Thread.Sleep(1000);
 
-            // Choose Language level
-            IWebElement languageLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select"));
-            languageLevel.Click();
+            //Click on Add button
+            AddButton.Click();
+            Thread.Sleep(1000);
 
-            // Create a SelectElement object to interact with the dropdown
-            SelectElement selectElement = new SelectElement(languageLevel);
+            //IWebElement messageBox = driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
 
-            // Get all options from the dropdown
-            IList<IWebElement> options = selectElement.Options;
-
-            // Create a Random object
-            Random random = new Random();
-
-            // Generate a random index
-            int randomIndex = random.Next(options.Count);
-
-            // Select the option by the randomly generated index
-            selectElement.SelectByIndex(randomIndex);
-
-            // Optional: Print out the selected option for verification
-            Console.WriteLine("Selected option: " + options[randomIndex].Text);
-
-            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input"));
-
-            Assert.That(newLanguage.Text == "Kannada", "Language not created");
-
-            //if(newLanguage.Text == "Kannada")
-            //{
-            //    Assert.Pass("Language is created successfully");
-            //}
-            //else
-            //{
-            //    Assert.Fail("Unable to create Language");
-            //}
         }
-
-
-        public void EditLanguagePage(IWebDriver driver)
+        public string Notification()
         {
-            
+            IWebElement messageBox = driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
+            return messageBox.Text;
         }
-
-        public void DeleteLanguagePage(IWebDriver driver)
+        //public string getLanguage()
+        //{
+        //    return AddLanguageTextbox.Text;
+        //}
+        //public string getLanguageLevel()
+        //{
+        //    return ChooseLanguageLevel.Text;
+        //}
+        public void UpdateLanguages(string language, string level)
         {
+            Thread.Sleep(1000);
+            PencilIcon.Click();
+            Thread.Sleep(1000);
 
+            //click onto New Update Language
+            UpdateLanguage.Click();
+            Thread.Sleep(1000);
+            UpdateLanguage.Clear();
+            //update the language that has to be added
+            UpdateLanguage.SendKeys(language);
+            Thread.Sleep(1000);
+
+            //update the language level
+            UpdateLanguagelevel.Click();
+            Thread.Sleep(1000);
+            UpdateLanguagelevel.Clear();
+            UpdateLanguagelevel.SendKeys(level);
+            Thread.Sleep(1000);
+
+            //Click on Update button
+            UpdateButton.Click();
+            Thread.Sleep(1000);
+
+            //IWebElement messageBox = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]"));
+
+            ////get the text of the message element
+            //string actualMessage = messageBox.Text;
+            //Console.WriteLine(actualMessage);
+
+            ////Verify the expected message text
+            //string expectedmessage1 = language + "has been updated to your record";
+            //string expectedmessage2 = "This language is already existed";
+
+            //Assert.That(actualMessage, Is.EqualTo(expectedmessage1).Or.EqualTo(expectedmessage2), "msgg");
+        }
+        public string getUpdateLanguage()
+        {
+            return UpdateLanguage.Text;
+        }
+        public string getUpdateLanguageLevel()
+        {
+            return UpdateLanguagelevel.Text;
+        }
+        public void DeleteLanguages()
+        {
+            DeleteLanguage.Click();
+            Thread.Sleep(2000);
         }
     }
 }
+

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsQA.Utilities
+namespace MarsOnboarding.Utilities
 {
     public class Wait
     {
