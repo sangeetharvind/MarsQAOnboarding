@@ -74,26 +74,16 @@ namespace MarsOnboarding.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add skill record with valid data")]
-        [NUnit.Framework.CategoryAttribute("Order1")]
-        [NUnit.Framework.TestCaseAttribute("", "Expert", null)]
-        [NUnit.Framework.TestCaseAttribute("", "Choose Skill level", null)]
-        [NUnit.Framework.TestCaseAttribute("3qr&&", "Intermediate", null)]
-        [NUnit.Framework.TestCaseAttribute("C#", "Choose Skill Level", null)]
-        [NUnit.Framework.TestCaseAttribute("", "Beginner", null)]
-        public void AddSkillRecordWithValidData(string skill, string skillLevel, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("1 Add skill record with valid data")]
+        [NUnit.Framework.TestCaseAttribute("\'C\'", "\'Expert\'", null)]
+        [NUnit.Framework.TestCaseAttribute("\'java\'", "\'Beginner\'", null)]
+        public void _1AddSkillRecordWithValidData(string skill, string skillLevel, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "Order1"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Skill", skill);
-            argumentsOfScenario.Add("Skill Level", skillLevel);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add skill record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Add skill record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -105,77 +95,62 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("User logged into skill page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When(string.Format("Adding new \'{0}\' and \'<Skill level>\' into the record", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("Adding new {0} and {1} into the record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then(string.Format("New \'{0}\' and \'<Skill level>\' are added successfully", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("New {0} and {1} are added successfully", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Update existing skill record with valid data")]
-        [NUnit.Framework.CategoryAttribute("Order2")]
-        [NUnit.Framework.TestCaseAttribute("", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("", "Skill level", null)]
-        public void UpdateExistingSkillRecordWithValidData(string skill, string skillLevel, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("2 Add skill record with valid skill and invalid skill level")]
+        [NUnit.Framework.TestCaseAttribute("\'Spanish\'", "\'\'", null)]
+        public void _2AddSkillRecordWithValidSkillAndInvalidSkillLevel(string skill, string skillLevel, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "Order2"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Skill", skill);
-            argumentsOfScenario.Add("Skill Level", skillLevel);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update existing skill record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 Add skill record with valid skill and invalid skill level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 17
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 18
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 19
+ testRunner.When(string.Format("Adding valid {0} and invalid {1} into the record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 20
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 21
- testRunner.Given("User logged into skill page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 22
- testRunner.When(string.Format("Update \'{0}\' and \'<Skill level>\' on an existing skill record", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 23
- testRunner.Then(string.Format("The skill record \'{0}\' and \'<Skill level>\' should be updated successfully", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("User should get an error in popup", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Delete Skill record successfully")]
-        [NUnit.Framework.CategoryAttribute("Order3")]
-        [NUnit.Framework.TestCaseAttribute("Salesforce", "Beginner", null)]
-        public void DeleteSkillRecordSuccessfully(string skill, string skillLevel, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("3 Add skill record with invalid skill and valid skill level")]
+        [NUnit.Framework.TestCaseAttribute("\'\'", "\'Expert\'", null)]
+        public void _3AddSkillRecordWithInvalidSkillAndValidSkillLevel(string skill, string skillLevel, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "Order3"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Skill", skill);
-            argumentsOfScenario.Add("Skill Level", skillLevel);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Skill record successfully", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 31
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 Add skill record with invalid skill and valid skill level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -185,14 +160,245 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 32
- testRunner.Given("User logged into skill page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 27
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 33
- testRunner.When(string.Format("Delete the record \'{0}\' and \'<Skill level>\'", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+ testRunner.When(string.Format("Adding invalid {0} and valid {1} into the record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 34
- testRunner.Then(string.Format("The record \'{0}\' and \'<Skill level>\' should be deleted successfully", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 29
+ testRunner.Then("User should get an error in popup accordingly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("4 Add skill record with invalid skill and invalid skill level")]
+        [NUnit.Framework.TestCaseAttribute("\'\'", "\'\'", null)]
+        public void _4AddSkillRecordWithInvalidSkillAndInvalidSkillLevel(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4 Add skill record with invalid skill and invalid skill level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 35
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 36
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 37
+ testRunner.When(string.Format("Adding invalid {0} and invalid {1} into the record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 38
+ testRunner.Then("User should get an error in popup accordingly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("5 Update existing skill record with valid data")]
+        [NUnit.Framework.TestCaseAttribute("\'C++\'", "\'Beginner\'", null)]
+        public void _5UpdateExistingSkillRecordWithValidData(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5 Update existing skill record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 44
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 45
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 46
+ testRunner.When(string.Format("Update {0} and {1} on an existing skill record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 47
+ testRunner.Then(string.Format("The skill record {0} and {1} should be updated successfully", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("6 Update existing skill record with valid skill and invalid skill level")]
+        [NUnit.Framework.TestCaseAttribute("\'C++\'", "\'Skill Level\'", null)]
+        public void _6UpdateExistingSkillRecordWithValidSkillAndInvalidSkillLevel(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("6 Update existing skill record with valid skill and invalid skill level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 53
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 54
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 55
+ testRunner.When(string.Format("Update valid {0} and invalid {1} on an existing skill record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 56
+ testRunner.Then("Error message should be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("7 Update existing skill record with invalid skill and valid skill level")]
+        [NUnit.Framework.TestCaseAttribute("\'\'", "\'Beginner\'", null)]
+        public void _7UpdateExistingSkillRecordWithInvalidSkillAndValidSkillLevel(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("7 Update existing skill record with invalid skill and valid skill level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 62
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 63
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 64
+ testRunner.When(string.Format("Updating invalid {0} and valid {1} on an existing skill record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 65
+ testRunner.Then("Error message should be display in popup", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("8 Update existing skill record with invalid skill and invalid skill level")]
+        [NUnit.Framework.TestCaseAttribute("\'\'", "\'Skill Level\'", null)]
+        public void _8UpdateExistingSkillRecordWithInvalidSkillAndInvalidSkillLevel(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("8 Update existing skill record with invalid skill and invalid skill level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 71
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 72
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 73
+ testRunner.When(string.Format("Update invalid {0} and invalid {1} on an existing skill record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 74
+ testRunner.Then("Error message has to be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("9 Delete Skill record successfully")]
+        [NUnit.Framework.TestCaseAttribute("\'C++\'", "\'Expert\'", null)]
+        public void _9DeleteSkillRecordSuccessfully(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("9 Delete Skill record successfully", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 82
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 83
+ testRunner.Given("User logged into skills page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 84
+ testRunner.When(string.Format("Delete the record {0} record", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 85
+ testRunner.Then(string.Format("The record {0} should be delete successfully", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("10 Add skill record with duplicate valid skill and valid skill level")]
+        [NUnit.Framework.TestCaseAttribute("\'java\'", "\'Beginner\'", null)]
+        public void _10AddSkillRecordWithDuplicateValidSkillAndValidSkillLevel(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("10 Add skill record with duplicate valid skill and valid skill level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 91
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 92
+ testRunner.Given("User is logged into localhost successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 93
+ testRunner.When(string.Format("Adding duplicated valid {0} and valid {1} to the language list", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 94
+ testRunner.Then("User should get an duplicated error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
